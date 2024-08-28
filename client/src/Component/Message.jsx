@@ -11,7 +11,7 @@ import {
 const Message= () => {
   const socket = useMemo(
     () =>
-      io("http://localhost:3000", {
+      io("http://localhost:5173", {
         withCredentials: true,
       }),
     []

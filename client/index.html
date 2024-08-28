@@ -17,18 +17,23 @@
           /* background-color:aquamarine; */
           /* padding: 5px; */
       }
-  </style>
+    </style>
   </head>
   <body>
     <div id="root"></div>
     <div id="spreadsheet"></div>
+
     <script>
         $(document).ready(function() {
-            var socialCalcControl = new SocialCalc.SpreadsheetControl();
-            socialCalcControl.InitializeSpreadsheetControl(document.getElementById('spreadsheet'), 3000, 2000, 100);
-            socialCalcControl.ResetSheet();
+            if (window.location.pathname === "/") {
+                var socialCalcControl = new SocialCalc.SpreadsheetControl();
+                socialCalcControl.InitializeSpreadsheetControl(document.getElementById('spreadsheet'), 3000, 2000, 100);
+                socialCalcControl.ResetSheet();
+            }
         });
     </script>
+
+    <!-- Main application script -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
