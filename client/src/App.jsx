@@ -8,7 +8,7 @@ import { BrowserRouter as Router,Routes,Route, Link } from 'react-router-dom';
 function App() {
   return (
     <>
-    asdasd
+    <Navbar/>
         {/* <Router> */}
           {/* <Header/> */}
           {/* <Routes> */}
