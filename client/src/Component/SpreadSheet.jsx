@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import Navbar from './Navbar';
 
@@ -11,7 +12,7 @@ const Spreadsheet = () => {
         jQueryScript.onload = () => {
             // Load SocialCalc after jQuery has loaded
             const socialCalcScript = document.createElement('script');
-            socialCalcScript.src = './dist/SocialCalc.js';
+            socialCalcScript.src = '../temp/SocialCalc.js';
             socialCalcScript.onload = () => {
                 if (window.location.pathname === "/sheet") {
                     const socialCalcControl = new SocialCalc.SpreadsheetControl();
@@ -26,7 +27,7 @@ const Spreadsheet = () => {
         // Load the stylesheet
         const socialCalcStylesheet = document.createElement('link');
         socialCalcStylesheet.rel = 'stylesheet';
-        socialCalcStylesheet.href = '../dist/socialcalc.css';
+        socialCalcStylesheet.href = '../temp/socialcalc.css';
         document.head.appendChild(socialCalcStylesheet);
 
         // Clean up the scripts and stylesheet when the component unmounts
