@@ -2,11 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="./public/image.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="dist/SocialCalc.js"></script>
-    <link rel="stylesheet" href="./dist/socialcalc.css">
     <title>SpreadSheet</title>
     <style>
       /* Optional: Add some styles to your spreadsheet */
@@ -21,19 +19,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <div id="spreadsheet"></div>
-
-    <script>
-        $(document).ready(function() {
-            if (window.location.pathname === "/") {
-                var socialCalcControl = new SocialCalc.SpreadsheetControl();
-                socialCalcControl.InitializeSpreadsheetControl(document.getElementById('spreadsheet'), 3000, 2000, 100);
-                socialCalcControl.ResetSheet();
-            }
-        });
-    </script>
-
-    <!-- Main application script -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
