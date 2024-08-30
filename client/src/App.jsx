@@ -4,19 +4,18 @@ import Message from './Component/Message'
 import Signin from './Component/Signin'
 import { BrowserRouter as Router,Routes,Route, Link } from 'react-router-dom';
 import Signout from './Component/Signout'
-import Spreadsheet from './Component/SpreadSheet'
 import Sheet from './Component/Sheet';
-import UserSheet from './Component/UserSheet';
-
+import Spreadsheet from './Component/sheet/SpreadSheet';
 function App() {
   return (
     <>  
+      <Spreadsheet/>
       {/* <Message/> */}
         <Router>
           <Routes>
-            <Route path="/" element={<UserSheet/>} />
+            {/* <Route path="/" element={<U/>} /> */}
             {/* <Route path="/profile" element={<Profile/>}/> */}
-            <Route path="/sheet" element={<Spreadsheet/>}/>
+            {/* <Route path="/sheet" element={<Spreadsheet/>}/> */}
             {/* <Route path="/login" element={<Signin/>}/> */}
             <Route path="/register" element={<Signout/>}/>
           </Routes>
