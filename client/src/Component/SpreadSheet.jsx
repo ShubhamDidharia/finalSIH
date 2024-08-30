@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Navbar from './Navbar';
+import Message from './Message';
 
 const Spreadsheet = () => {
     const spreadsheetRef = useRef(null);
@@ -43,6 +44,7 @@ const Spreadsheet = () => {
     return <>
             <Navbar/>
             <div id="spreadsheet" ref={spreadsheetRef} style={{ width: 'fit-content' }}></div>
+            <Message/>
         </>;
 };
 

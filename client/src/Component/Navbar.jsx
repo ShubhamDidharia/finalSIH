@@ -61,13 +61,6 @@ const Navbar = () => {
             }}/>
             </button>
             <button className="hover:border-transparent bg-white hover:bg-gray-300 size-11 mx-1 
-            flex items-center justify-center rounded-full self-auto focus:outline-none"> 
-            <MessageIcon style={{
-                color: '#4c4e52',
-                fontSize: '1.8rem'
-            }}/>
-            </button>
-            <button className="hover:border-transparent bg-white hover:bg-gray-300 size-11 mx-1 
             flex items-center justify-center rounded-full focus:outline-none"> 
             <VideoChatIcon style={{
                 color: '#4c4e52',
