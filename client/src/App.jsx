@@ -4,8 +4,7 @@ import Message from './Component/Message'
 import Signin from './Component/Signin'
 import { BrowserRouter as Router,Routes,Route, Link } from 'react-router-dom';
 import Signout from './Component/Signout'
-import Sheet from './Component/Sheet';
-import Spreadsheet from './Component/sheet/SpreadSheet';
+import Spreadsheet from './Component/SpreadSheet';
 function App() {
   return (
     <>  
