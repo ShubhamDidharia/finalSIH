@@ -52,6 +52,8 @@ body
 </form> -->
 <textarea id="savestr" style="display:none;"></textarea>
 <input type="button" name="savespreadsheet" value="Save" onclick="dosave();" class="smaller">
+<input type="button" value="Reload" onclick="doreload();" class="smaller">
+
 <!-- <div id="msg" style="position:absolute;right:15px;"> -->
 <!-- <input type="button" style="font-size:x-small;" value="Clear" onclick="addmsg('',true);"><br> -->
 <!-- <textarea id="msgtext" style="margin-top:10px;width:110px;height:200px;"></textarea><br> -->
@@ -176,8 +178,7 @@ function doreload() {
       spreadsheet.ExecuteCommand('recalc', '');
       }
    }
-   doreload();
-function doresize() {
+   function doresize() {
    spreadsheet.DoOnResize();
    }
 

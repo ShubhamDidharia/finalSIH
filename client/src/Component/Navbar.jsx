@@ -12,32 +12,49 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import app from '../context/firebase'
-import { getAuth } from 'firebase/auth';
-import {getFirestore, collection, getDocs,addDoc} from 'firebase/firestore';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import {getFirestore, collection, getDoc,addDoc,setDoc,doc} from 'firebase/firestore';
 
 const firestore=getFirestore(app);
 const auth = getAuth(app);
 const Navbar = () => {
     const navigate=useNavigate();
     const [isFilled, setIsFilled] = useState(false);
-
+    const [user, setUser] = useState("");
+    const [title, setTitle] = useState("Untitled Spreadsheet");
     const handleIconClick = () => {
         setIsFilled(!isFilled);
     };
     useEffect(() => {  
-        
-    });
+        onAuthStateChanged(auth,async (user) => {
+            if (user) {
+              console.log(user.email);  // user is logged in
+              const docRef = doc(firestore, "User", user.email);
+              const docSnap = await getDoc(docRef);
+              if (docSnap.exists()) {
+                const userData = docSnap.data();
+                localStorage.setItem('spreadsheetData',userData.data);
+                localStorage.setItem('pagename',userData.title);
+                setTitle(userData.title);
+            } else {
+                // No such document
+                console.log("No such document!");
+            }
+              setUser(user);
+            } 
+          });
+    },[]);
     const local=()=>{
-        toast.success('Data Saved to Cloud Storage');
-        addDoc(collection(firestore, "Data"), {
-            text:localStorage.getItem('spreadsheetData'),
-        }).then(()=>{
-            alert('Data Saved to Cloud Storage');
-        }).catch((error)=>{
-            alert('Error Adding Data');
-        });   
-
+        setDoc(doc(firestore, "User", user.email), {
+            data: localStorage.getItem('spreadsheetData'),
+            title: localStorage.getItem('pagename')
+        }).then(() => {
+            toast.success('Data Saved to Cloud Storage');
+        }).catch((error) => {
+            alert('Error Adding Data: ' + error.message);
+        });
     }
+    localStorage.setItem('pagename',title);
   return (
     <div className="w-[100vw] h-[60px] flex items-center justify-between">
         <div className="w-[25%] h-[75%] flex items-center justify-between px-3">
@@ -52,8 +69,9 @@ const Navbar = () => {
             </button>
             <input 
                 type="text" 
-                placeholder="Untitled Spreadsheet" 
+                placeholder={title}
                 id="title_name"
+                onChange={(e) => setTitle(e.target.value)}
                 className="h-[100%] w-[100%] text-[1.0rem] text-center font-bold bg-none border-none focus:outline-none"
             />
             
