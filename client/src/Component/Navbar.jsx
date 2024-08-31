@@ -11,7 +11,12 @@ import CloudDoneIcon from '@mui/icons-material/CloudDone';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import app from '../context/firebase'
+import { getAuth } from 'firebase/auth';
+import {getFirestore, collection, getDocs,addDoc} from 'firebase/firestore';
 
+const firestore=getFirestore(app);
+const auth = getAuth(app);
 const Navbar = () => {
     const navigate=useNavigate();
     const [isFilled, setIsFilled] = useState(false);
@@ -24,7 +29,14 @@ const Navbar = () => {
     });
     const local=()=>{
         toast.success('Data Saved to Cloud Storage');
-        console.log(localStorage.getItem('spreadsheetData'));
+        addDoc(collection(firestore, "Data"), {
+            text:localStorage.getItem('spreadsheetData'),
+        }).then(()=>{
+            alert('Data Saved to Cloud Storage');
+        }).catch((error)=>{
+            alert('Error Adding Data');
+        });   
+
     }
   return (
     <div className="w-[100vw] h-[60px] flex items-center justify-between">

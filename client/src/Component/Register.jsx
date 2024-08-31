@@ -29,10 +29,9 @@ const Register = () => {
 
     const submitHandler = async () => {
         if (isPasswordMatch) {
-            // await createUserWithEmailAndPassword(auth, email, password);
-            await addDoc(collection(firestore, "users/m7UGemvvSb9DeHfDyl1L"), {
-                email: email,
-                password: password
+            await createUserWithEmailAndPassword(auth, email, password);
+            await addDoc(collection(firestore, "User"), {
+                email: email
             }).then(() => {
                     toast.success('Registered Successfully');
                     navigate("/sheet");
