@@ -20,19 +20,19 @@ const Navbar = () => {
     };
   return (
     <div className="w-[100vw] h-[60px] flex items-center justify-between">
-        <div className="w-[25%] h-[75%] flex items-center justify-between px-1">
+        <div className="w-[25%] h-[75%] flex items-center justify-between px-3">
         <button className="hover:border-transparent bg-white hover:bg-gray-300 w-[14%] size-12
         flex items-center justify-center rounded-full focus:outline-none">
             <InsertDriveFileIcon style={{
                 color: '#4c4e52',
-                fontSize: '2.6rem'
+                fontSize: '2.0rem'
             }}/>
             </button>
             <input 
                 type="text" 
                 placeholder="Untitled Spreadsheet" 
                 id="title_name"
-                className="h-[100%] w-[100%] text-[1.2rem] text-center font-bold bg-none border-none focus:outline-none"
+                className="h-[100%] w-[100%] text-[1.0rem] text-center font-bold bg-none border-none focus:outline-none"
             />
             
             <div className="flex space-x-1.5">
