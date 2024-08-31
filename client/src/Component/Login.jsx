@@ -65,7 +65,7 @@ const Login = () => {
               <label for="password" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm" >Password</label>
             </div>
             <div class="relative flex justify-center">
-              <button class="bg-cyan-500 text-white rounded-md px-2 py-1 mt-2" onClick={submitHandler}>Submit</button>
+              <button class="w-full h-12 bg-cyan-500 text-white rounded-md px-2 mt-2 flex items-center justify-center" onClick={submitHandler}>Submit</button>
             </div>
           </div>
         </div>
@@ -80,7 +80,7 @@ const Login = () => {
             onClick={()=>{
               navigate("/register");
             }}
-            class=" mb-2 rounded-lg inline-block bg-cyan-500 px-4 pb-2 pt-2.5 text-lg font-semibold leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
+            class=" mb-3 rounded-lg inline-block bg-cyan-500 px-4 pb-2 pt-2.5 text-lg font-semibold leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
             Sign Up
         </button>
 
