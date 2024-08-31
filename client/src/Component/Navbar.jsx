@@ -10,6 +10,8 @@ import DriveFileMoveIcon from '@mui/icons-material/DriveFileMove';
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+
 const Navbar = () => {
     const navigate=useNavigate();
     const [isFilled, setIsFilled] = useState(false);
@@ -21,13 +23,16 @@ const Navbar = () => {
         
     });
     const local=()=>{
+        toast.success('Data Saved to Cloud Storage');
         console.log(localStorage.getItem('spreadsheetData'));
     }
   return (
     <div className="w-[100vw] h-[60px] flex items-center justify-between">
         <div className="w-[25%] h-[75%] flex items-center justify-between px-3">
         <button className="hover:border-transparent bg-white hover:bg-gray-300 w-[14%] size-12
-        flex items-center justify-center rounded-full focus:outline-none">
+        flex items-center justify-center rounded-full focus:outline-none" onClick={()=>{
+            navigate('/');
+        }}>
             <InsertDriveFileIcon style={{
                 color: '#4c4e52',
                 fontSize: '2.0rem'

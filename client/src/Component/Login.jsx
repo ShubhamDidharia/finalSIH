@@ -4,8 +4,11 @@ import app from '../context/firebase'
 import { useEffect } from 'react'
 import { createUserWithEmailAndPassword, getAuth ,GoogleAuthProvider,onAuthStateChanged,signInWithEmailAndPassword,signInWithPopup} from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+
 const auth =getAuth(app);
 const googleauthprovider=new GoogleAuthProvider();
+
 const Login = () => {
   const navigate=useNavigate();
   const [email,setemail]=useState("");
@@ -13,15 +16,19 @@ const Login = () => {
   const submitHandler=()=>{
     console.log(email,password);
       signInWithEmailAndPassword(auth,email,password).then(()=>{ 
+        toast.success('Login Successfully');
           navigate("/sheet");
       } ).catch((error)=>{
+        toast.error('Login Failed');
           console.log("error aa gaya");
       });
   }
     const signin=()=>{
         signInWithPopup(auth,googleauthprovider).then(()=>{ 
+          toast.success('Login Successfully');
             navigate("/sheet");   
         } ).catch((error)=>{  
+          toast.error('Login Failed');
             console.log(error); 
         });
     }

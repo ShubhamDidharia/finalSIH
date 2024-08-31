@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 import app from '../context/firebase'
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import {getFirestore, collection, getDocs,addDoc} from 'firebase/firestore';
 
+const firestore=getFirestore(app);
 const auth = getAuth(app);
 const googleAuthProvider = new GoogleAuthProvider();
 
@@ -26,25 +29,31 @@ const Register = () => {
 
     const submitHandler = async () => {
         if (isPasswordMatch) {
-            await createUserWithEmailAndPassword(auth, email, password)
-                .then(() => {
+            // await createUserWithEmailAndPassword(auth, email, password);
+            await addDoc(collection(firestore, "users/m7UGemvvSb9DeHfDyl1L"), {
+                email: email,
+                password: password
+            }).then(() => {
+                    toast.success('Registered Successfully');
                     navigate("/sheet");
                 })
                 .catch((error) => {
+                    toast.error('Registration Failed');
                     console.error("Error occurred:", error);
                 });
         } else {
-            console.error("Passwords do not match");
+            toast.error('Passwords do not match');
         }
     }
 
     const signInWithGoogle = async () => {
         await signInWithPopup(auth, googleAuthProvider)
             .then(() => {
+                toast.success('Login Successfully');
                 navigate("/sheet");
             })
             .catch((error) => {
-                console.error("Error during Google sign-in:", error);
+                toast.error('Login Failed');
             });
     }
 

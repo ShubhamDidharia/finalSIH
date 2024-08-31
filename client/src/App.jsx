@@ -9,6 +9,7 @@ import Home from './Component/Home'
 import Profile from './Component/Profile'
 import RecentUser from './Component/RecentUser'
 import VedioCall from './Component/VedioCall'
+import toast, { Toaster } from 'react-hot-toast';
 function App() {
   return (
     <>  
@@ -23,7 +24,7 @@ function App() {
             <Route path='/recent' element={<RecentUser/>}/>
             <Route path='/call' element={<VedioCall/>}/>
           </Routes>
-          {/* <ToastContainer/> */}
+          <Toaster/>
         </Router>
     </>
   )

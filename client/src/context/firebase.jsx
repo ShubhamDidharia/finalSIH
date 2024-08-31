@@ -1,10 +1,9 @@
-// Import the functions you need from the SDKs you need
 
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth} from "firebase/auth";
 import { createContext, useContext } from "react";
 import { getDatabase,set,ref } from "firebase/database";
-
+import { getFirestore } from "firebase/firestore";
 const FireBaseContext=createContext(null);
 export const useFirebase=()=>useContext(FireBaseContext);
 
@@ -23,7 +22,7 @@ const firebaseConfig = {
 const app= initializeApp(firebaseConfig);
 const FireBaseAuth=getAuth(app);
 const database=getDatabase(app);
-
+const db = getFirestore(app);
 export const FirebaseProvider=(props)=>{
   const signupwithemailandpassword=(email,password)=>{
     createUserWithEmailAndPassword(FireBaseAuth,email,password);
