@@ -2,12 +2,23 @@ import React from 'react';
 import Navbar from './Navbar'
 import Message from './Message';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const auth = getAuth();
 
 const SpreadSheet = () => {
   const navigate=useNavigate();
-
+  const [user, setUser] = React.useState(null);
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      console.log(user.email);  // user is logged in
+      setUser(user);
+    } else {
+      navigate('/login');
+    }
+  });
+  if(user===null){
+    navigate('/login');
+  }
   return (
     <>
     <Navbar/>
