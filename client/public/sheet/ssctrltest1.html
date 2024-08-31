@@ -51,8 +51,34 @@ body
 </div>
 </form> -->
 <textarea id="savestr" style="display:none;"></textarea>
-<input type="button" name="savespreadsheet" value="Save" onclick="dosave();" class="smaller">
-<input type="button" value="Reload" onclick="doreload();" class="smaller">
+<input type="button" name="savespreadsheet" value="Save" onclick="dosave();" class="smaller" 
+style="background-color:#6D6968;
+border: none;
+color: white;
+padding: 10px 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 12px;
+transition: background-color 0.4s, color 0.4s, border 0.4s"
+>
+<input type="button" value="Reload" onclick="doreload();" class="smaller"
+style="background-color: #6D6968;
+border: none;
+color: white;
+padding: 10px 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+border-radius:12px;
+transition: background-color 0.4s, color 0.4s, border 0.4s"
+>
 
 <!-- <div id="msg" style="position:absolute;right:15px;"> -->
 <!-- <input type="button" style="font-size:x-small;" value="Clear" onclick="addmsg('',true);"><br> -->
@@ -147,7 +173,6 @@ SocialCalc.Callbacks.expand_wiki = function(displayvalue, sheetobj, linkstyle, v
 
 function dosave() {
    savestr.value = spreadsheet.CreateSpreadsheetSave();
-   console.log(savestr.value);
    try {
           localStorage.setItem('spreadsheetData', savestr.value);
          //  localStorage.setItem('pagename', document.f0.pagename.value);
@@ -181,7 +206,8 @@ function doreload() {
    function doresize() {
    spreadsheet.DoOnResize();
    }
-
+window.onload = function() {
+   doreload();}
 function doattribs() {
    var attribs = spreadsheet.sheet.EncodeCellAttributes(spreadsheet.editor.ecell.coord);
    var str = "";
