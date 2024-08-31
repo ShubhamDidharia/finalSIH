@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 io.on('connect', (socket) => {
-  console.log('a user connected');
+  socket.broadcast.emit('welcome',"user connected");
   socket.on('message', (msg) => {
     console.log('message: ' + msg);
     io.emit('receive-message', msg);

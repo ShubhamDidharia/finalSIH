@@ -10,17 +10,16 @@ const Message = () => {
     []
   );
 
-  const [messages, setMessages] = useState([]);
-  const [message, setMessage] = useState("");
+  const [messages, setmessages] = useState([]);
+  const [message, setmessage] = useState("");
   const [room, setRoom] = useState("");
   const [socketID, setSocketId] = useState("");
   const [roomName, setRoomName] = useState("");
 
   const handleSubmit = (e) => {
-    setMessage(messages.push(message));
     e.preventDefault();
-    socket.emit("message", { message, room });
-    setMessage("");
+    socket.emit("message",message);
+    setmessage("");
   };
 
   const joinRoomHandler = (e) => {
@@ -28,24 +27,24 @@ const Message = () => {
     socket.emit("join-room", roomName);
     setRoomName("");
   };
-
+  socket.on("receive-message", (msg) => {
+    setmessages([...messages,msg]);
+  });
+  socket.on('welcome', (msg) => {
+    setmessages([...messages,msg]);
+  });
   useEffect(() => {
     socket.on("connect", () => {
-      messages.push("new user connected")
       console.log("connected",socket.id);
     });
-    socket.emit("message",message);
-    socket.on("receive-message", (msg) => {
-      messages.push(msg.message);
-    });
-
     return () => {
-      messages.push("user left");
+      setmessages([...messages, "user left"]);
       socket.disconnect();
     };
-
-  }, [messages.size]);
+  }, []);
+  
   const [open,setopen] =useState(false);
+  console.log(messages);
   return (
     <>
       <button
@@ -54,6 +53,7 @@ const Message = () => {
         aria-haspopup="dialog"
         aria-expanded="false"
         data-state="closed"
+        style={{ transition: "all ease 1.2s" }}
         onClick={(e)=>setopen(c=>!c)}
       >
         <svg
@@ -114,7 +114,7 @@ const Message = () => {
               className="border-gray-200 p-2 rounded-lg w-full"
               placeholder="Type a message..."
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={(e) => setmessage(e.target.value)}
             />
           </form>
           <button onClick={handleSubmit} className="w-1/4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Send</button>

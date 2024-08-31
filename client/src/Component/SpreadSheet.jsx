@@ -1,8 +1,13 @@
 import React from 'react';
 import Navbar from './Navbar'
 import Message from './Message';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { Navigate, useNavigate } from 'react-router-dom';
+const auth = getAuth();
 
 const SpreadSheet = () => {
+  const navigate=useNavigate();
+
   return (
     <>
     <Navbar/>
