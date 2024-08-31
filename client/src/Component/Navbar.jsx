@@ -1,61 +1,81 @@
-import React from 'react';
+import React, { useState } from 'react';
 import VideoChatIcon from '@mui/icons-material/VideoChat';
-import MessageIcon from '@mui/icons-material/Message';
 import RestoreIcon from '@mui/icons-material/Restore';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from '@mui/icons-material/Star';
 import DriveFileMoveIcon from '@mui/icons-material/DriveFileMove';
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 const Navbar = () => {
+    const [isFilled, setIsFilled] = useState(false);
+
+    // Toggle the state on click
+    const handleIconClick = () => {
+        setIsFilled(!isFilled);
+    };
   return (
-    <div className="w-[100vw] h-[auto] flex justify-between items-center py-2">
-        <div className="w-[25%] h-[80%] flex items-center justify-between px-1">
-        <button className="hover:border-transparent bg-white hover:bg-gray-300 w-[15%] size-13
+    <div className="w-[100vw] h-[60px] flex items-center justify-between">
+        <div className="w-[25%] h-[75%] flex items-center justify-between px-1">
+        <button className="hover:border-transparent bg-white hover:bg-gray-300 w-[14%] size-12
         flex items-center justify-center rounded-full focus:outline-none">
             <InsertDriveFileIcon style={{
                 color: '#4c4e52',
-                fontSize: '2.3rem'
+                fontSize: '2.6rem'
             }}/>
             </button>
-            <div className="self-start">
             <input 
                 type="text" 
                 placeholder="Untitled Spreadsheet" 
                 id="title_name"
-                className="h-[10%] w-[100%] text-[1.2rem] text-left font-bold bg-none border-none focus:outline-none"
+                className="h-[100%] w-[100%] text-[1.2rem] text-center font-bold bg-none border-none focus:outline-none"
             />
-            </div>
-            <div className="flex self-start flex space-x-1.0">
-                <button className="hover:border-transparent bg-white hover:bg-gray-300 size-1
+            
+            <div className="flex space-x-1.5">
+            
+            <button className="hover:border-transparent bg-white hover:bg-gray-300 size-1
                 flex items-center justify-center rounded-full focus:outline-none px-4 py-4">
-            <StarBorderIcon style={{
-                color: '#4c4e52',
-                fontSize: '1.3rem'
-            }}/>
+            <div onClick={handleIconClick}>
+            {isFilled ? (
+                <StarIcon
+                    style={{
+                        color: 'blue',
+                        fontSize: '1.5rem',
+                    }}
+                />
+            ) : (
+                <StarBorderIcon
+                    style={{
+                        color: '#4c4e52',
+                        fontSize: '1.5rem',
+                    }}
+                />
+            )}
+        </div>
             </button>
             <button className="hover:border-transparent bg-white hover:bg-gray-300 size-1
             flex items-center justify-center rounded-full focus:outline-none px-4 py-4">
             <DriveFileMoveIcon style={{
                 color: '#4c4e52',
-                fontSize: '1.3rem'
+                fontSize: '1.5rem'
             }}/>
             </button>
             <button className="hover:border-transparent bg-white hover:bg-gray-300 size-1
             flex items-center justify-center rounded-full focus:outline-none px-4 py-4">
             <CloudDoneIcon style={{
                 color: '#4c4e52',
-                fontSize: '1.3rem'
+                fontSize: '1.5rem'
             }}/>
             </button>
             </div>
+            
         </div>
-        <div className="w-[23%] h-[auto] flex items-center justify-around ">
-        <button className="hover:border-transparent bg-white hover:bg-gray-300 size-11 mx-1 
+        <div className="w-[19%] h-[auto] flex items-center justify-around ">
+        <button className="hover:border-transparent bg-white hover:bg-gray-300 size-11  
         flex items-center justify-center rounded-full focus:outline-none "> 
-              <RestoreIcon style={{
+            <RestoreIcon style={{
                 color: '#4c4e52',
                 fontSize: '1.8rem'
             }}/>
