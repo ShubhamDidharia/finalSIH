@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import VideoChatIcon from '@mui/icons-material/VideoChat';
 import RestoreIcon from '@mui/icons-material/Restore';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
@@ -14,10 +14,15 @@ const Navbar = () => {
     const navigate=useNavigate();
     const [isFilled, setIsFilled] = useState(false);
 
-    // Toggle the state on click
     const handleIconClick = () => {
         setIsFilled(!isFilled);
     };
+    useEffect(() => {  
+        
+    });
+    const local=()=>{
+        console.log(localStorage.getItem('spreadsheetData'));
+    }
   return (
     <div className="w-[100vw] h-[60px] flex items-center justify-between">
         <div className="w-[25%] h-[75%] flex items-center justify-between px-3">
@@ -67,7 +72,7 @@ const Navbar = () => {
             }}/>
             </button>
             <button className="hover:border-transparent bg-white hover:bg-gray-300 size-1
-            flex items-center justify-center rounded-full focus:outline-none px-4 py-4">
+            flex items-center justify-center rounded-full focus:outline-none px-4 py-4" onClick={local}>
             <CloudDoneIcon style={{
                 color: '#4c4e52',
                 fontSize: '1.5rem'

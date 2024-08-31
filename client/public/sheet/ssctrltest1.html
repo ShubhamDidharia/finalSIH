@@ -21,10 +21,10 @@ body
 </style>
 </head>
 <body onresize="doresize();">
-<form name="f0" action="" method="POST">
+<!-- <form name="f0" action="" method="POST">
 <div style="padding:6px;background-color:#80A9F3;">
 <span style="font-weight:bold;color:white;">ssctrltest1.html</span>
-<!-- <input type="button" name="savespreadsheet" value="Save" onclick="dosave();" class="smaller">
+
 <input type="submit" name="newcolors" value="New Colors" onclick="document.f0.action='?4C808';" class="smaller">
 <input class="hide" type="button" value="Recalc" onclick="spreadsheet.ExecuteCommand('recalc', '');" class="smaller">
 <input class="hide" type="button" value="Redisplay" onclick="spreadsheet.editor.ScheduleRender();" class="smaller">
@@ -45,12 +45,13 @@ body
 <input type="button" value="Time Save" onclick="var t=new Date();var i;for(i=0;i<100;i++){spreadsheet.CreateSpreadsheetSave();}addmsg(((new Date()-t)/1000));" class="smaller">
 <input type="button" value="Time C-Save" onclick="var t=new Date();var i;for(i=0;i<100;i++){spreadsheet.sheet.CreateSheetSave(null,true);}addmsg(((new Date()-t)/1000));" class="smaller">
 <input type="button" value="Time Encode" onclick="var t=new Date();var i;for(i=0;i<100;i++){spreadsheet.sheet.EncodeCellAttributes(spreadsheet.editor.ecell.coord);}addmsg(((new Date()-t)/1000));" class="smaller">
-<textarea id="savestr" style="display:none;"></textarea>
 <input type="hidden" name="newstr" id="newdata" value="">
 <input type="hidden" name="pagename" value="$pagename">
-<input type="hidden" name="sheetname" value="$sheetname"> -->
+<input type="hidden" name="sheetname" value="$sheetname">
 </div>
-</form>
+</form> -->
+<textarea id="savestr" style="display:none;"></textarea>
+<input type="button" name="savespreadsheet" value="Save" onclick="dosave();" class="smaller">
 <!-- <div id="msg" style="position:absolute;right:15px;"> -->
 <!-- <input type="button" style="font-size:x-small;" value="Clear" onclick="addmsg('',true);"><br> -->
 <!-- <textarea id="msgtext" style="margin-top:10px;width:110px;height:200px;"></textarea><br> -->
@@ -59,7 +60,6 @@ body
 <script>
 
 // document.getElementById("msgtext").value = "";
-
 // function setmsg(msg) {document.getElementById("msg").innerHTML = msg;}
 // function addmsg(msg, clear) {
 //    var msgtextid = document.getElementById("msgtext");
@@ -100,7 +100,6 @@ body
 
    var spreadsheet = new SocialCalc.SpreadsheetControl();
    var savestr = document.getElementById("savestr");
-
    spreadsheet.InitializeSpreadsheetControl("tableeditor", 0, 0, 0);
    spreadsheet.ExecuteCommand('redisplay', '');
 
@@ -146,11 +145,20 @@ SocialCalc.Callbacks.expand_wiki = function(displayvalue, sheetobj, linkstyle, v
 
 function dosave() {
    savestr.value = spreadsheet.CreateSpreadsheetSave();
-   alert(savestr.value);
+   console.log(savestr.value);
+   try {
+          localStorage.setItem('spreadsheetData', savestr.value);
+         //  localStorage.setItem('pagename', document.f0.pagename.value);
+         //  localStorage.setItem('sheetname', document.f0.sheetname.value);
+          alert('Changes saved');
+      } catch (e) {
+          console.error('Failed to save data to local storage:', e);
+          alert('Failed to save changes to local storage.');
+      }
    }
-
 function doreload() {
-
+   savestr.value = localStorage.getItem('spreadsheetData');
+   spreadsheet.ParseSheetSave(savestr.value);
    var parts = spreadsheet.DecodeSpreadsheetSave(savestr.value);
    if (parts) {
       if (parts.sheet) {
@@ -168,7 +176,7 @@ function doreload() {
       spreadsheet.ExecuteCommand('recalc', '');
       }
    }
-
+   doreload();
 function doresize() {
    spreadsheet.DoOnResize();
    }

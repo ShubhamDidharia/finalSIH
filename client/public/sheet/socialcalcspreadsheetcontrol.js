@@ -2973,21 +2973,9 @@ SocialCalc.SpreadsheetControlCreateSpreadsheetSave = function(spreadsheet, other
          otherpartsnames += "part:"+partname + "\n";
          }
       }
-
-   result = "socialcalc:version:1.0\n" +
-      "MIME-Version: 1.0\nContent-Type: multipart/mixed; boundary="+
-      spreadsheet.multipartBoundary + "\n" +
-      "--" + spreadsheet.multipartBoundary + "\nContent-type: text/plain; charset=UTF-8\n\n" +
-      "# SocialCalc Spreadsheet Control Save\nversion:1.0\npart:sheet\npart:edit\npart:audit\n" + otherpartsnames +
-      "--" + spreadsheet.multipartBoundary + "\nContent-type: text/plain; charset=UTF-8\n\n" +
-      spreadsheet.CreateSheetSave() +
-      "--" + spreadsheet.multipartBoundary + "\nContent-type: text/plain; charset=UTF-8\n\n" +
-      spreadsheet.editor.SaveEditorSettings() +
-      "--" + spreadsheet.multipartBoundary + "\nContent-type: text/plain; charset=UTF-8\n\n" +
-      spreadsheet.sheet.CreateAuditString() +
-      otherpartsstr +
-      "--" + spreadsheet.multipartBoundary + "--\n";
-
+      console.log(spreadsheet.CreateSheetSave());
+   result = 
+      spreadsheet.CreateSheetSave() 
    return result;
 
    }

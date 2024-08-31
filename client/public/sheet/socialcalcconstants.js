@@ -815,4 +815,3 @@ SocialCalc.ConstantsSetClasses = function(prefix) {
          }
       }
    }
-

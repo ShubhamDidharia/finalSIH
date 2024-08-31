@@ -182,8 +182,8 @@ SocialCalc.Cell = function(coord) {
    this.datatype = null;
    this.formula = "";
    this.valuetype = "b";
-
-   }
+   
+}
 
 // The types of cell properties
 //
