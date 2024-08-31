@@ -73,7 +73,7 @@ const RecentUser = () => {
     </div>
   </div>
 </nav>
-    <div className='h-[75vh]  w-screen flex justify-center items-center'>
+    <div className='h-[75vh]  w-screen flex justify-center items-center text-center'>
     <table class="text-xl" >
   <thead>
     <tr>
