@@ -136,7 +136,7 @@ const Navbar = () => {
             }}/>
             </button>
             <div className="flex space-x-0.5">
-                <button className="hover:border-transparent bg-gray-100 hover:bg-gray-300 w-[80px] h-[38px] bg-[#ADD8E6] 
+                <button className="hover:border-transparent w-[80px] h-[38px] 
                 flex items-center justify-center cursor-pointer rounded-full rounded-r-lg bg-sky-100 hover:bg-sky-200 focus:outline-none">
                     <LockOutlinedIcon style={{
                         color: 'black',
@@ -145,7 +145,7 @@ const Navbar = () => {
                     }}/>
                     Share
                 </button>
-                <button className="w-[10%px] h-[38px] hover:border-transparent bg-gray-100 hover:bg-gray-300 bg-[#ADD8E6] size-1 
+                <button className="w-[10%px] h-[38px] hover:border-transparent size-1 
                 flex items-center justify-center cursor-pointer rounded-full rounded-l-lg bg-sky-100 hover:bg-sky-200 focus:outline-none px-3">
                     <ArrowDropDownIcon style={{
                         color: 'black',
