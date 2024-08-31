@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import app from '../context/firebase'
-
-import { createUserWithEmailAndPassword, getAuth ,GoogleAuthProvider,signInWithEmailAndPassword,signInWithPopup} from 'firebase/auth';
+import { useEffect } from 'react'
+import { createUserWithEmailAndPassword, getAuth ,GoogleAuthProvider,onAuthStateChanged,signInWithEmailAndPassword,signInWithPopup} from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 const auth =getAuth(app);
 const googleauthprovider=new GoogleAuthProvider();
@@ -25,6 +25,16 @@ const Login = () => {
             console.log(error); 
         });
     }
+    const [user, setUser] = React.useState(null);
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+              console.log(user.email);  // user is logged in
+              setUser(user);
+              navigate('/sheet');
+            }
+          });
+    });
   return (
     <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
   <div class="relative py-3 sm:max-w-xl sm:mx-auto">

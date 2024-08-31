@@ -107,8 +107,8 @@ const Message = () => {
                 </p>
               </div>
             ))}
-  </div>
-        <div className="mt-4 flex flex-row justify-between space-x-3">
+        </div>
+        <div className="mt-0 flex flex-row justify-between space-x-3">
           <form  className="w-full">
             <input
               className="border-gray-200 p-2 rounded-lg w-full"
@@ -117,7 +117,7 @@ const Message = () => {
               onChange={(e) => setmessage(e.target.value)}
             />
           </form>
-          <button onClick={handleSubmit} className="w-1/4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Send</button>
+          <button type="submit" onClick={handleSubmit} className="w-1/4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-0 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 ">Send</button>
         </div>
       </div>:<></>}
     </>

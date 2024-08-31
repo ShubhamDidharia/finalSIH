@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import app from '../context/firebase'
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 const auth = getAuth(app);
@@ -12,10 +12,17 @@ const Register = () => {
     const [retype, setRetype] = useState("");
     const [isPasswordMatch, setIsPasswordMatch] = useState(true);
     const navigate = useNavigate();
-
+    const [user, setUser] = useState(null);
     useEffect(() => {
         setIsPasswordMatch(password === retype);
-    }, [password, retype]);
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+              console.log(user.email);  // user is logged in
+              setUser(user);
+              navigate('/sheet');
+            } 
+          });
+    }, [retype,user]);
 
     const submitHandler = async () => {
         if (isPasswordMatch) {
