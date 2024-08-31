@@ -16,7 +16,7 @@ const SpreadSheet = () => {
     title="SpreadSheet"
     width="100%"
     height="700vh"
-    style={{border: 'none' ,marginTop:'20px'}}
+    style={{border: 'none'}}
   ></iframe>
   <Message/>
     </>
