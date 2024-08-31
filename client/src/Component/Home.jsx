@@ -3,8 +3,9 @@ import SecurityIcon from '@mui/icons-material/Security';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import GroupsIcon from '@mui/icons-material/Groups';
 import GoogleIcon from '@mui/icons-material/Google';
- 
+import { useNavigate } from 'react-router-dom';
 const Home = () => {
+    const navigate=useNavigate();
   function toggleDropdown(menuId) {
     const dropdownMenu = document
     .getElementById(menuId);
@@ -18,7 +19,9 @@ const Home = () => {
     <header class="fixed w-full">
      <nav class="bg-white border-gray-200 ">
      <div class=" max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-     <div class="flex items-center space-x-3 rtl:space-x-reverse">
+     <div class="flex items-center space-x-3 rtl:space-x-reverse" onClick={()=>{
+        navigate('/sheet');
+     }}>
       <img src="./2.png" class="h-14" alt="Flowbite Logo" />
       <span class="self-center text-2xl font-semibold whitespace-nowrap ">SocialCalc</span>
      </div>
@@ -28,11 +31,15 @@ const Home = () => {
         <a href="#" class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 " aria-current="page">Home</a>
       </li>
       <li>
-        <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 ">Profile</a>
+        <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 " onClick={()=>{
+            navigate('/profile');
+        }}>Profile</a>
       </li>
       
       <li>
-        <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 ">Contact</a>
+        <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 " onClick={()=>{
+            navigate('/sheet');
+        }}>Sheet</a>
       </li>
     </ul>
   </div>
@@ -52,7 +59,9 @@ const Home = () => {
                   <p class="text-lg font-medium text-white lg:text-xl  text-center">"Create, Analyze, and Share Your Data with Ease"</p>
  
                 <div class="space-y-4 sm:flex sm:space-y-0 sm:space-x-4 mt-7">
-                <button type="button" class=" text-white bg-blue-700 hover:bg-blue-800 focus:outline-none   font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">Explore</button>
+                <button type="button" class=" text-white bg-blue-700 hover:bg-blue-800 focus:outline-none   font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={()=>{
+                    navigate('/sheet');
+                }}>Explore</button>
                 </div>
             </div>
  
