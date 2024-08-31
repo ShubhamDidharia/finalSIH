@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { deleteUser, getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 const auth = getAuth();
 const Profile = () => {
   const navigate=useNavigate();
@@ -35,15 +36,53 @@ const Profile = () => {
   }
   return (
     <>
-    <button onClick={()=>{
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+  <div class="max-w-screen flex flex-wrap items-center justify-between px-6 pt-3 pb-2">
+    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="./2.png" class="h-12" alt="SocialCalc Logo" />
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">SocialCalc</span>
+    </a>
+    
+    <div class="hidden  md:block md:w-auto" id="navbar-default">
+      <ul class="font-medium flex flex-col  md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-5 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        
+        <li>
+          <button class="bg-blue-700 text-white hover:bg-blue-800 px-6 me-2 mb-2  font-medium rounded-full "onClick={()=>{
         navigate(-1);
-    }} className='m-3'>Back</button>
-    <button onClick={()=>{
+    }}>Back</button>
+        </li>
+        <li>
+        <button class=" bg-blue-700 text-white hover:bg-blue-800  me-2 mb-2 font-medium rounded-full " onClick={()=>{
         navigate('/sheet');
     }}>Sheet</button>
-    <div className='h-screen w-full flex justify-center items-center flex-col gap-10'>
+        </li>
+      </ul>
+    </div>
+  </div>
+    </nav>
+<div class="flex justify-center mx-auto mt-40 bg-white w-[25%] shadow rounded-lg border">
+    <div class="px-4 py-5 sm:px-6\\\">
+        <h3 class="text-lg mt-3 leading-6 font-medium text-gray-900">
+            User Profile
+        </h3>
+      
+    </div>
+    <div class="border-t border-gray-200 px-4 py-6 sm:p-0">
+        <dl class="sm:divide-y sm:divide-gray-200">
+            <div class="py-3 sm:py-5 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">
+                    Email
+                </dt>
+                <dd class=" mt-2 text-sm text-gray-900 ">
+                    {user}
+                </dd>
+            </div>   
+        </dl>
+    </div>
+</div>
+<div className='flex justify-center items-center flex-col gap-10 text-white'>
       {user}
-      <button type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100" onClick={()=>{
+      <button class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onClick={()=>{
         signOut(auth).then(() => {
           localStorage.removeItem('spreadsheetData');
           localStorage.removeItem('pagename');
@@ -53,10 +92,12 @@ const Profile = () => {
           console.log(error);
         });
       }}>Logout</button>
-      <button type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100" 
+      <button class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100  focus:z-10 focus:ring-4 focus:ring-gray-100" 
       onClick={delet}>Delete Account</button>
     </div>
-    </>
+
+
+   </>
   )
 }
 
