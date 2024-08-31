@@ -2,12 +2,30 @@ import React, { useEffect } from 'react'
 import Navbar from './Navbar'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
-
+import { collection, getDocs ,getFirestore} from "firebase/firestore"; 
+import app from '../context/firebase';
+const firestore = getFirestore(app);
 const auth = getAuth();
 const RecentUser = () => {
     const navigate=useNavigate();
     const [user, setUser] = React.useState(null);
     const [userRecord, setUserRecord] = React.useState([]);
+    useEffect(() => {
+        const getUsers = async () => {
+          const usersCol = collection(firestore, "User");
+          const userSnapshot = await getDocs(usersCol);
+          
+          // Map the snapshot to extract only the user data
+          const userRecord = userSnapshot.docs.map((doc) => ({
+              id: doc.id, // This includes the user's email as the ID
+              ...doc.data(), // This spreads out the data fields (e.g., `data`)
+          }));
+          console.log(userRecord);
+          // Set the userRecord state or use it as needed
+          setUserRecord(userRecord);
+        };
+        getUsers();
+    } ,[]);
     onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log(user.email);  // user is logged in
@@ -62,15 +80,9 @@ const RecentUser = () => {
     </tr>
   </thead>
   <tbody >
-    <tr>
-      <td>The Sliding Mr. Bones</td>
-    </tr>
-    <tr>
-      <td>The Sliding Mr. Bones</td>
-    </tr>
     {userRecord.map((user) => (
         <tr>
-            <td>{user.email}</td>
+            <td>{user.id}</td>
         </tr>
     ))}
   </tbody>

@@ -30,16 +30,13 @@ const Register = () => {
     const submitHandler = async () => {
         if (isPasswordMatch) {
             await createUserWithEmailAndPassword(auth, email, password);
-            await addDoc(collection(firestore, "User"), {
-                email: email
+            await setDoc(doc(firestore, "User", email), {
+                data: data,
             }).then(() => {
-                    toast.success('Registered Successfully');
-                    navigate("/sheet");
-                })
-                .catch((error) => {
-                    toast.error('Registration Failed');
-                    console.error("Error occurred:", error);
-                });
+                toast.success('Data Saved to Cloud Storage');
+            }).catch((error) => {
+                alert('Error Adding Data: ' + error.message);
+            });
         } else {
             toast.error('Passwords do not match');
         }
