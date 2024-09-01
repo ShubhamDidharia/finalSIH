@@ -6,7 +6,6 @@ import { getDatabase,set,ref } from "firebase/database";
 import { getFirestore } from "firebase/firestore";
 const FireBaseContext=createContext(null);
 export const useFirebase=()=>useContext(FireBaseContext);
-import 'dotenv/config';
 const firebaseConfig = {
   apiKey:"AIzaSyBjoaKnE6RmbNydFwfgIa94iuvghLJEIEU",
   authDomain:"testing-b2fc7.firebaseapp.com",
