@@ -6,16 +6,15 @@ import { getDatabase,set,ref } from "firebase/database";
 import { getFirestore } from "firebase/firestore";
 const FireBaseContext=createContext(null);
 export const useFirebase=()=>useContext(FireBaseContext);
-import config from '../../config.js';
 const firebaseConfig = {
-  apiKey:config.VITE_API_KEY,
-  authDomain:config.VITE_AUTH_DOMAIN,
-  projectId:config.VITE_PROJECT_ID,
-  storageBucket:config.VITE_STORAGE_BUCKET,
-  messagingSenderId:config.VITE_MESSAGING_SENDER_ID,
-  appId:config.VITE_APP_ID,
-  measurementId:config.VITE_MEASUREMENT_ID,
-  databaseURL:config.VITE_DATABASE_URL
+  apiKey:process.env.VITE_API_KEY,
+  authDomain:process.env.VITE_AUTH_DOMAIN,
+  projectId:process.env.VITE_PROJECT_ID,
+  storageBucket:process.env.VITE_STORAGE_BUCKET,
+  messagingSenderId:process.env.VITE_MESSAGING_SENDER_ID,
+  appId:process.env.VITE_APP_ID,
+  measurementId:process.env.VITE_MEASUREMENT_ID,
+  databaseURL:process.env.VITE_DATABASE_URL
 };
 
 
