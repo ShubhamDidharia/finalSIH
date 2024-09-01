@@ -2,13 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { io } from "socket.io-client";
 
 const Message = () => {
-  const socket = useMemo(
-    () =>
-      io("http://localhost:3000", {
-        withCredentials: true,
-      }),
-    []
-  );
+
 
   const [messages, setmessages] = useState([]);
   const [message, setmessage] = useState("");
@@ -22,29 +16,10 @@ const Message = () => {
     setmessage("");
   };
 
-  const joinRoomHandler = (e) => {
-    e.preventDefault();
-    socket.emit("join-room", roomName);
-    setRoomName("");
-  };
-  socket.on("receive-message", (msg) => {
-    setmessages([...messages,msg]);
-  });
-  socket.on('welcome', (msg) => {
-    setmessages([...messages,msg]);
-  });
   useEffect(() => {
-    socket.on("connect", () => {
-      console.log("connected",socket.id);
-    });
-    return () => {
-      setmessages([...messages, "user left"]);
-      socket.disconnect();
-    };
   }, []);
   
   const [open,setopen] =useState(false);
-  console.log(messages);
   return (
     <>
       <button
