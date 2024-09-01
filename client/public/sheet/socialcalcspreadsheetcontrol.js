@@ -816,7 +816,7 @@ SocialCalc.SpreadsheetControl = function() {
       onclick: SocialCalc.SpreadsheetControlClipboardOnclick,
       onclickFocus: "clipboardtext"
       });
-
+      
    this.views["clipboard"] = {name: "clipboard", divStyle: "overflow:auto;", html:
       ' <div style="font-size:x-small;padding:5px 0px 10px 0px;">'+
       '  <b>%loc!Display Clipboard in!:</b>'+
