@@ -245,7 +245,7 @@ SocialCalc.SpreadsheetControl = function() {
 
    this.tabnums.edit = this.tabs.length;
    this.tabs.push({name: "edit", text: "Edit", html:
-      ' <div id="%id.edittools" style="padding:10px 0px 0px 0px;">'+
+      ' <div id="%id.edittools" style="padding:10px 0px 0px 0px; display:flex; justify-content:center; gap:7px; height:25px">'+
 '&nbsp;<img id="%id.button_undo" src="%img.undo.gif" style="vertical-align:bottom;">'+
 ' <img id="%id.button_redo" src="%img.redo.gif" style="vertical-align:bottom;">'+
 ' &nbsp;<img src="%img.divider1.gif" style="vertical-align:bottom;">&nbsp; '+
@@ -986,10 +986,10 @@ spreadsheet.Buttons = {
          {MouseDown: SocialCalc.DoButtonCmd, command: spreadsheet.Buttons[button].command});
       }
 
-   // create formula bar
-
+   // create formula ba
    spreadsheet.formulabarDiv = document.createElement("div");
    spreadsheet.formulabarDiv.style.height = spreadsheet.formulabarheight + "px";
+   spreadsheet.formulabarDiv.style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center;"
    spreadsheet.formulabarDiv.innerHTML = '<input type="text" size="60" value="">&nbsp;'; //'<textarea rows="4" cols="60" style="z-index:5;background-color:white;position:relative;"></textarea>&nbsp;';
    spreadsheet.spreadsheetDiv.appendChild(spreadsheet.formulabarDiv);
    var inputbox = new SocialCalc.InputBox(spreadsheet.formulabarDiv.firstChild, spreadsheet.editor);
@@ -1000,7 +1000,7 @@ spreadsheet.Buttons = {
       bele.src = spreadsheet.imagePrefix+spreadsheet.formulabuttons[button].image;
       bele.style.verticalAlign = "middle";
       bele.style.border = "1px solid #FFF";
-      bele.style.marginLeft = "4px";
+      bele.style.marginLeft = "14px";
       SocialCalc.TooltipRegister(bele, SCLoc(spreadsheet.formulabuttons[button].tooltip), {});
       SocialCalc.ButtonRegister(bele,
          {normalstyle: "border:1px solid #FFF;backgroundColor:#FFF;",
