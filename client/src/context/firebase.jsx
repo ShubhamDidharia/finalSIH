@@ -6,9 +6,8 @@ import { getDatabase,set,ref } from "firebase/database";
 import { getFirestore } from "firebase/firestore";
 const FireBaseContext=createContext(null);
 export const useFirebase=()=>useContext(FireBaseContext);
-
 const firebaseConfig = {
-  apiKey: "AIzaSyBjoaKnE6RmbNydFwfgIa94iuvghLJEIEU",
+  apiKey:"AIzaSyBjoaKnE6RmbNydFwfgIa94iuvghLJEIEU",
   authDomain: "testing-b2fc7.firebaseapp.com",
   projectId: "testing-b2fc7",
   storageBucket: "testing-b2fc7.appspot.com",
