@@ -4,7 +4,7 @@ import { io } from "socket.io-client";
 const Message = () => {
   const socket = useMemo(
     () =>
-      io("http://localhost:3000", {
+      io(import.meta.env.VITE_ORGIN_LINK, {
         withCredentials: true,
       }),
     []
