@@ -7,14 +7,14 @@ import { getFirestore } from "firebase/firestore";
 const FireBaseContext=createContext(null);
 export const useFirebase=()=>useContext(FireBaseContext);
 const firebaseConfig = {
-  apiKey:import.meta.env.VITE_API_KEY,
-  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_APP_ID,
-  measurementId: import.meta.env.VITE_MEASUREMENT_ID,
-  databaseURL: import.meta.env.VITE_DATABASE_URL
+  apiKey:"AIzaSyBjoaKnE6RmbNydFwfgIa94iuvghLJEIEU",
+  authDomain: "testing-b2fc7.firebaseapp.com",
+  projectId: "testing-b2fc7",
+  storageBucket: "testing-b2fc7.appspot.com",
+  messagingSenderId: "789805491019",
+  appId:"1:789805491019:web:29b7670577616d2d68bece",
+  measurementId:"G-EXS8NX6MMV",
+  databaseURL:"https://testing-b2fc7-default-rtdb.firebaseio.com"
 };
 
 
