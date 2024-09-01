@@ -81,8 +81,7 @@ const Profile = () => {
     </div>
 </div>
 <div className='flex justify-center items-center flex-col gap-10 text-white'>
-      {user}
-      <button class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 " onClick={()=>{
+      <button class="text-white mt-8 bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 " onClick={()=>{
         signOut(auth).then(() => {
           localStorage.removeItem('spreadsheetData');
           localStorage.removeItem('pagename');
