@@ -45,7 +45,7 @@ const Home = () => {
   </div>
   <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
       <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2 text-center" onClick={()=>{
-        navigate('/login');
+        navigate('/profile');
       }}>Sign in</button>
   </div>
   </div>

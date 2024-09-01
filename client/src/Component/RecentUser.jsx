@@ -74,16 +74,16 @@ const RecentUser = () => {
   </div>
 </nav>
     <div className='h-[75vh]  w-screen flex justify-center items-center text-center'>
-    <table class="text-xl" >
+    <table class="text-xl border-4" >
   <thead>
     <tr>
-    <th>Users</th>
+    <th className='text-[25px] p-4'>Users</th>
     </tr>
   </thead>
   <tbody >
     {userRecord.map((user) => (
-        <tr>
-            <td>{user.id}</td>
+        <tr className='border-2'>
+            <td className='border-4 p-3'>{user.id}</td>
         </tr>
     ))}
   </tbody>
