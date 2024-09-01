@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import VideoChatIcon from '@mui/icons-material/VideoChat';
-import RestoreIcon from '@mui/icons-material/Restore';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -9,6 +8,7 @@ import StarIcon from '@mui/icons-material/Star';
 import DriveFileMoveIcon from '@mui/icons-material/DriveFileMove';
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import GroupsIcon from '@mui/icons-material/Groups';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import app from '../context/firebase'
@@ -121,7 +121,7 @@ const Navbar = () => {
         flex items-center justify-center rounded-full focus:outline-none " onClick={()=>{
             navigate('/recent');
         }}> 
-            <RestoreIcon style={{
+            <GroupsIcon style={{
                 color: '#4c4e52',
                 fontSize: '1.8rem'
             }}/>
