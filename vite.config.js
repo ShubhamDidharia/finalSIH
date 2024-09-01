@@ -6,6 +6,6 @@ import envCompatible from 'vite-plugin-env-compatible'
 export default defineConfig({
   plugins: [
     react(),
-    envCompatible({ prefix: "VITE_" }) // Specify the prefix as an option here
+ // Specify the prefix as an option here
   ],
 })
